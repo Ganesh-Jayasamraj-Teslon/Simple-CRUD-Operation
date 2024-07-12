@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:  
+    image: mongo
+    ports:
+      - 27017:27017
+
+  back-end:
+    build: ./Back-End/
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    environment:
+      MONGODB_URL: mongodb://mongodb:27017/Users
+      PORT: 3000
+
+  front-end:
+    build: ./Front-End/
+    ports:
+      - 8080:8080
+    depends_on:
+      - back-end
+    environment:
+      B_E_HOST: http://192.168.0.88:3000
