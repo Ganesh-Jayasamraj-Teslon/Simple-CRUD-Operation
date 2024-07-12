@@ -22,4 +22,4 @@ services:
     depends_on:
       - back-end
     environment:
-      B_E_HOST: http://192.168.0.88:3000
+      B_E_HOST: http://13.202.62.122:3000
